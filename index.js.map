@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/main.js"],"sourcesContent":["\nimport SimpleLightbox from \"simplelightbox\";\n\nimport \"simplelightbox/dist/simple-lightbox.min.css\";\n\nconsole.log(SimpleLightbox);"],"names":["SimpleLightbox"],"mappings":"svBAKA,QAAQ,IAAIA,CAAc"}
