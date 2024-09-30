@@ -31,7 +31,7 @@ formEl.addEventListener('submit', event => {
         
         return;
     }
-    
+    galleryEl.innerHTML = '';
     loaderEl.style.display = 'block';   
 
     fetchImages({ q: query })
@@ -40,7 +40,7 @@ formEl.addEventListener('submit', event => {
             const { hits } = data;
 
             if (hits.length === 0) {
-                galleryEl.innerHTML = '';
+                
                 iziToast.error({
                     title: '',
                     backgroundColor: 'rgba(239, 64, 64, 1)',
@@ -58,12 +58,11 @@ formEl.addEventListener('submit', event => {
                 });
             return;
             }
-
+            
             renderGallery(hits);
 
         })
         .catch(error => {
-           
             loaderEl.style.display = 'none';
             iziToast.error({
                 title: 'Error',
