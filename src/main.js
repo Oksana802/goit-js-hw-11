@@ -6,6 +6,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const formEl = document.querySelector('form');
 const loaderEl = document.querySelector('.loader');
+const galleryEl = document.querySelector('.gallery');
 
 
 formEl.addEventListener('submit', event => {
@@ -27,9 +28,10 @@ formEl.addEventListener('submit', event => {
             // close: true,
             maxWidth: '432px'
         });
+        
         return;
     }
-
+    
     loaderEl.style.display = 'block';   
 
     fetchImages({ q: query })
@@ -38,6 +40,7 @@ formEl.addEventListener('submit', event => {
             const { hits } = data;
 
             if (hits.length === 0) {
+                galleryEl.innerHTML = '';
                 iziToast.error({
                     title: '',
                     backgroundColor: 'rgba(239, 64, 64, 1)',
@@ -53,12 +56,14 @@ formEl.addEventListener('submit', event => {
                     maxWidth: '432px'
 
                 });
-                return;
+            return;
             }
 
             renderGallery(hits);
+
         })
         .catch(error => {
+           
             loaderEl.style.display = 'none';
             iziToast.error({
                 title: 'Error',
